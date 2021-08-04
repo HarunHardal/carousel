@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    width: 70%;
+    margin: 20px auto;
+    overflow: hidden;
+    border: 2px solid red;
+    position: relative;
+}
+.carousel{
+    height: 400px;
+    width: 100%;
+    display: flex;
+}
+.carousel img{
+    background-size: cover;
+    width: 100%;
+}
+.prev, .next{
+    color: rgb(255, 0, 13);
+    font-size: 25px;
+    font-weight: 900;
+    position: absolute;
+    margin: 20px;
+    top: 40%;
+    transition: .3s linear;
+    cursor: pointer;
+}
+.next{
+    right: 0;
+}
+.prev:hover, .next:hover{
+    color: #f5f5f5;
+}
+span{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: red;
+
+}

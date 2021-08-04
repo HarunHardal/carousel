@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="carousel">
+                <img src="5.jpg" alt="deneme5" id="lastClone"> 
+                <img src="1.jpg" alt="deneme1" id="lastClone">
+                <img src="2.jpg" alt="deneme2">
+                <img src="3.jpg" alt="deneme3">
+                <img src="4.jpg" alt="deneme4">
+                <img src="5.jpg" alt="deneme5">
+                <img src="1.jpg" alt="deneme1" id="firstClone">
+            </div>
+            <a class="prev">&#10094</a>
+            <a class="next">&#10095</a>
+        </div>
+        <p id="deneme"></p>
+    </header>
+    <script>
+        const carousel = document.querySelector('.carousel');
+        const CarouselImg = document.querySelectorAll('.carousel img');
+        const prev = document.querySelector('.prev');
+        const next = document.querySelector('.next');
+        var count = 1;
+        const size = CarouselImg[0].clientWidth;
+        carousel.style.transform = `translateX(${-size*count}px)`;
+        const deneme = document.querySelector('#deneme');
+        
+        next.addEventListener('click',()=>{
+            if(count>=CarouselImg.length-1) return
+            carousel.style.transition = '.4s linear';
+            count++;
+            carousel.style.transform = `translateX(${-size*count}px)`;
+            console.log(count);
+        });
+        prev.addEventListener('click',()=>{
+            if(count<=0) return
+            carousel.style.transition = '.4s linear';
+            count--;
+            carousel.style.transform = `translateX(${-size*count}px)`;
+            console.log(count);
+        });
+        carousel.addEventListener('transitionend',()=>{
+            
+            if(CarouselImg[count].id=='lastClone'){
+                carousel.style.transition = 'none';
+                count = CarouselImg.length-2;
+                carousel.style.transform = `translateX(${-size*count}px)`;
+            }
+            if(CarouselImg[count].id=='firstClone'){
+                carousel.style.transition = 'none';
+                count = CarouselImg.length-count;
+                carousel.style.transform = `translateX(${-size*count}px)`;
+            }
+
+
+        })
+
+
+    </script>
+</body>
+</html>
